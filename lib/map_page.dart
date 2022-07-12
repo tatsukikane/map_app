@@ -20,6 +20,22 @@ class _MapPAgeState extends State<MapPAge> {
     zoom: 16,
   );
 
+  //pin用変数 Markerオブジェクトを返す set型
+  //この中にpinを追加していくことができる
+  final Set<Marker> _markers = {
+    const Marker(
+      markerId: MarkerId('1'),
+      position: LatLng(35.6695409653854, 139.70297543992643),
+      //pinをタップした時の表示
+      infoWindow: InfoWindow(title: 'じーず', snippet: 'おいでませ')
+    ),
+    const Marker(
+      markerId: MarkerId('2'),
+      position: LatLng(35.670623135039115, 139.7030526687628),
+      infoWindow: InfoWindow(title: 'いけあ', snippet: '色々売ってるよ'),
+    ),
+  };
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +46,9 @@ class _MapPAgeState extends State<MapPAge> {
         //map生成のタイミングでコントローラーを生成
         onMapCreated: (GoogleMapController controller){
           _controller = controller;
-        }
+        },
+        //pinの描画
+        markers: _markers,
       ),
     );
   }
