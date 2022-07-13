@@ -33,6 +33,7 @@
 
 # Web related
 lib/generated_plugin_registrant.dart
+
 lib/searched_list_page.dart
 
 # Symbolication related
