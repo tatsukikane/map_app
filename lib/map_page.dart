@@ -60,12 +60,12 @@ class _MapPAgeState extends State<MapPAge> {
   //pin用変数 Markerオブジェクトを返す set型
   //この中にpinを追加していくことができる
   final Set<Marker> _markers = {
-    // const Marker(
-    //   markerId: MarkerId('1'),
-    //   position: LatLng(35.6695409653854, 139.70297543992643),
-    //   //pinをタップした時の表示
-    //   infoWindow: InfoWindow(title: 'じーず', snippet: 'おいでませ')
-    // ),
+    const Marker(
+      markerId: MarkerId('1'),
+      position: LatLng(35.6695409653854, 139.70297543992643),
+      //pinをタップした時の表示
+      infoWindow: InfoWindow(title: 'じーず', snippet: 'おいでませ')
+    ),
     // const Marker(
     //   markerId: MarkerId('2'),
     //   position: LatLng(35.670623135039115, 139.7030526687628),
@@ -178,6 +178,17 @@ class _MapPAgeState extends State<MapPAge> {
                 myLocationEnabled: true,
                 //右下のボタンの非表示(デフォはtrueになってる)
                 //myLocationButtonEnabled: false,
+                onTap: (LatLng latLang) {
+                  setState(() {
+                    _markers.add(Marker(
+                      //todo markeridを自動生成させる
+                      markerId: MarkerId('2'),
+                      position: latLang,
+                      //titleは入力された値を入れる
+                      infoWindow: InfoWindow(title: '検索結果')
+                    ));
+                  });
+                },
               ),
             ),
             Text(
